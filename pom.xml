@@ -10,7 +10,6 @@
 		<module>spring-boot-learning-web</module>
 	</modules>
 	<packaging>pom</packaging>
-
 	<name>spring-boot-learning</name>
 
 	<properties>
@@ -31,4 +30,13 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<build>
+		<finalName>spring-boot-learning</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
