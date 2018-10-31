@@ -1,0 +1,15 @@
+WebServerFactoryCustomizer
+tomcat的web.xml配置的每一个属性，在java中都对应一个类。
+例如：Connector节点中protocol属性，肯定是对应一个getProtocol和setProtocol方法。
+
+心得：如果想通过API的方式去扩展Spring Boot；一般找Customizer结尾的接口。把此接口作为一个Bean，
+通过它的实现类去扩展相关属性。它的实现类中一般会有一个Configurable开头的接口，通过这个接口就
+可以修改相关属性。
+例如：tomcat
+WebServerFactoryCustomizer
+ConfigurableWebServerFactory
+
+所谓的反转：就是不要主动去NEW,把生成对象的权利交给容器处理。
+JNDI
+
+Dubbo是一个二进制的协议，在序列化和数据传输方面，性能会比较好。
