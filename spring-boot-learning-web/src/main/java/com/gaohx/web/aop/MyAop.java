@@ -4,6 +4,11 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.lang.reflect.Method;
+import java.util.Arrays;
 
 @Aspect
 @Component
@@ -21,6 +26,12 @@ public class MyAop {
     public Object logAcess(ProceedingJoinPoint point) {
         System.out.println(point.getSignature().getName());
         System.out.println(point.getSignature().getDeclaringType().getName());
+        Method[] methods = point.getSignature().getDeclaringType().getDeclaredMethods();
+        for (Method method : methods) {
+            System.out.println(method.getName());
+            System.out.println(method.getDeclaredAnnotation(GetMapping.class));
+        }
+
         try {
             return point.proceed();
         } catch (Throwable throwable) {
