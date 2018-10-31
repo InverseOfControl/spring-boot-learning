@@ -7,6 +7,7 @@ import org.springframework.boot.builder.ParentContextCloserApplicationListener;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SpringBootApplication
+@ServletComponentScan(basePackages = "com.gaohx.web.servlet")
 public class SpringBootDemoApplication {
 
     public static void main(String[] args) {

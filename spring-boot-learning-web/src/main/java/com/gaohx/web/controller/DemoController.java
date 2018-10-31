@@ -1,5 +1,6 @@
 package com.gaohx.web.controller;
 
+import com.gaohx.web.annotation.MyAnnotation;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@MyAnnotation(key = "aaa",values = "bbb")
 public class DemoController {
 
     @GetMapping("/demo1")
