@@ -1,2 +1,7 @@
-com\gaohx\web\controller\DemoController.class
+com\gaohx\web\servlet\MyServlet.class
+com\gaohx\web\aop\MyAop.class
 com\gaohx\web\SpringBootDemoApplication.class
+com\gaohx\web\Test.class
+com\gaohx\web\annotation\MyAnnotation.class
+com\gaohx\web\Test$1.class
+com\gaohx\web\controller\DemoController.class
