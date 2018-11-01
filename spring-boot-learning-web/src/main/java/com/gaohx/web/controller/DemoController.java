@@ -9,14 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @MyAnnotation(key = "aaa",values = "bbb")
 public class DemoController {
 
     @GetMapping("/demo1")
-    public String demo1() {
-        System.out.println("DemoController.555");
-        return "Hello World";
+    public Object demo1(String name) {
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("a",1);
+        map.put("b",1);
+        map.put("c",name);
+        return map;
     }
 
     @GetMapping(path = {"demo2", "demo3"})
