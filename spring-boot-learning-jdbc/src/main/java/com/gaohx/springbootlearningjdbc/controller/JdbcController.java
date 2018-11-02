@@ -1,8 +1,12 @@
-package com.gaohx.springbootlearningjdbc;
+package com.gaohx.springbootlearningjdbc.controller;
 
+import com.gaohx.springbootlearningjdbc.domain.User;
 import com.gaohx.springbootlearningjdbc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
@@ -14,7 +18,7 @@ import java.sql.Statement;
 @RestController
 public class JdbcController {
 
-    @Autowired
+    @Autowired(required = false)
     private DataSource dataSource;
 
     @Autowired
@@ -22,6 +26,12 @@ public class JdbcController {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @GetMapping("/saveUser")
+    public Object saveUser(User user){
+        boolean bool = userService.saveUser(user);
+        return ResponseEntity.ok(bool);
+    }
 
     public void getUser(){
         Connection connection = null;

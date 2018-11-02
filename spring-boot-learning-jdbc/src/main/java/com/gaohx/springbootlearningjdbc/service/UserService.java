@@ -1,7 +1,7 @@
 package com.gaohx.springbootlearningjdbc.service;
 
-import com.gaohx.springbootlearningjdbc.User;
+import com.gaohx.springbootlearningjdbc.domain.User;
 
 public interface UserService {
-    public void saveUser(User user);
+    public boolean saveUser(User user);
 }

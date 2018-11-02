@@ -1,4 +1,4 @@
-package com.gaohx.springbootlearningjdbc;
+package com.gaohx.springbootlearningjdbc.domain;
 
 public class User {
     private String name;
