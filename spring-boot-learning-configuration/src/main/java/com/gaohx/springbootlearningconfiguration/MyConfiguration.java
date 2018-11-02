@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 @ConfigurationProperties(prefix = "aaa.security")
 @PropertySource("classpath:myapplication.properties")
-@Component
+@Configuration
 public class MyConfiguration {
     private String name;
     private String password;
