@@ -1,0 +1,19 @@
+Spring启动的时候，在每一个阶段都会有一个监听器监听相应的事件。
+SpringApplicationRunListener
+Spring启动的事件触发器：
+EventPublishingRunListener implements SpringApplicationRunListener{}
+在EventPublishingRunListener中，有多个事件的触发方法。这些方法都是在SpringApplication.run()
+方法中调用的，也就是触发了事件。一旦触发了事件，监听器就会监听到做相应的操作。
+
+事件跟Spring的上下文关系是非常紧密的
+
+Bootstrap上下文：
+BootstrapApplicationListener
+Bootstrap是Spring Boot的父上下文。父上下文加载好了，子上下文直接用就好了。
+说明：
+prepareEnvironment(listeners,applicationArguments)  触发了ApplicationEnvironmentPreparedEvent事件
+而BootstrapApplicationListener正好监听了ApplicationEnvironmentPreparedEvent事件。
+所以Bootstrap的上下文是在Spring Boot的上下文之前。
+createApplicationContext()
+
+注意点：多个角度去思考问题。考虑作者为什么要这样写源码。
