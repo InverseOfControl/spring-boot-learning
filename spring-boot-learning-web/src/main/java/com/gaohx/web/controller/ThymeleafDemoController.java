@@ -24,6 +24,11 @@ public class ThymeleafDemoController {
         return model;
     }
 
+    @GetMapping("/error1")
+    public Object error() throws Exception {
+       throw new Exception("错误");
+    }
+
 }
 
 class User {
