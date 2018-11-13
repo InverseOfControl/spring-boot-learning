@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <classPathEntry location="D:\repository\com\oracle\jdbc\ojdbc\11.2\ojdbc-11.2.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!--<commentGenerator type="org.mybatis.generator.internal.CustomeCommentGenerator">
+            <property name="javaFileEncoding" value="UTF-8"/>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="false"/>
+        </commentGenerator>-->
+
+        <!--数据库连接-->
+        <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@121.40.208.215:2521:ipay" userId="MCS"
+                        password="PLe36GRseopJD0bShNx9">
+            <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>
+
+        <!-- Java 模型对象生成器 -->
+        <javaModelGenerator targetPackage="com.gaohx.springbootlearningjdbc.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- SQL Mapper XML 生成器 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- SQL Mapper Interface生成器 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.gaohx.springbootlearningjdbc.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 定义生成的表和类名 -->
+        <table tableName="t_city" domainObjectName="City"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>
