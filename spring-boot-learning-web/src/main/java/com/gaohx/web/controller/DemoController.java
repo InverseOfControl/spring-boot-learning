@@ -39,7 +39,7 @@ public class DemoController {
 
     @GetMapping(path = {"demo2", "demo3"})
     public String demo2() {
-        System.out.println("DemoController.555");
+        System.out.println("DemoController.555666");
         return "Hello World";
     }
 
