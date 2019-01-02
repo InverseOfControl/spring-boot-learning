@@ -1,19 +1,22 @@
 package com.gaohx.security.web;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DemoController {
 
-    @GetMapping("/index")
-    public String index() {
-        return "index";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "hello";
+
+    @GetMapping("/index")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    public String index() {
+        return "index";
     }
 
 }
