@@ -1,23 +1,10 @@
 package com.gaohx.springbootlearningjdbc.controller;
 
-import com.gaohx.springbootlearningjdbc.domain.City;
-import com.gaohx.springbootlearningjdbc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class JdbcController {
-
-    @Autowired
-    private UserService userService;
-
-    @GetMapping("user/{id}")
-    public City user(@PathVariable String id){
-        return userService.getUser(id);
-    }
-
     /*@GetMapping("/saveUser")
     public Object saveUser(User user){
         boolean bool = userService.saveUser(user);

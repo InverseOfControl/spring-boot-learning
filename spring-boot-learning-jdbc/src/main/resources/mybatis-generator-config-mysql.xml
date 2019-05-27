@@ -3,30 +3,40 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
-    <context id="TestTables">
 
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/test"
+    <!-- 引入驱动包，包路径设置为自己本地私服库的路径 -->
+    <classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java\5.1.6\mysql-connector-java-5.1.6.jar" />
+
+    <context id="TestTables">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/my_test"
                         userId="root" password="123456"/>
 
         <!-- Java 模型对象生辰器 -->
-        <javaModelGenerator targetPackage="com.segmentfault.springbootlesson7.entity2"
+        <javaModelGenerator targetPackage="com.gaohx.springbootlearningjdbc.model"
                             targetProject="${user.dir}/src/main/java"/>
 
         <!-- SQL Mapper XML 生成器 -->
-        <sqlMapGenerator targetPackage="mybatis.mappers" targetProject="${user.dir}/src/main/resources"/>
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="${user.dir}/src/main/resources"/>
 
         <!-- SQL Mapper Java 接口 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.segmentfault.springbootlesson7.mapper"
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.gaohx.springbootlearningjdbc.dao"
                              targetProject="${user.dir}/src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="user">
-            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
-            <columnOverride column="name" property="name"/>
-            <columnOverride column="age" property="age"/>
-            <columnOverride column="desc" property="description"/>
+        <table tableName="user"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
+               enableUpdateByExample="false" enableCountByExample="false"
+               enableUpdateByPrimaryKey="false"/>
 
-        </table>
+        <table tableName="role"
+               enableSelectByPrimaryKey="true" enableSelectByExample="false"
+               enableDeleteByPrimaryKey="false" enableDeleteByExample="false"
+               enableUpdateByExample="false" enableCountByExample="false"
+               enableUpdateByPrimaryKey="false"/>
     </context>
 </generatorConfiguration>
