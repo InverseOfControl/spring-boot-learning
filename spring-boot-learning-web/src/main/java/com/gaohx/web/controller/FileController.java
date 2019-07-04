@@ -1,6 +1,9 @@
 package com.gaohx.web.controller;
 
 import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.InputStreamSource;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
@@ -12,9 +15,9 @@ import java.nio.file.Paths;
 
 /**
  * 文件下载
+ *
  * @see Files
  * @see Paths
- *
  */
 @RestController
 public class FileController {
@@ -47,6 +50,18 @@ public class FileController {
         return new InputStreamResource(is);
     }
 
+    @GetMapping(value = "downloadFile4")
+    public ResponseEntity<InputStreamSource> downloadFile4(HttpServletResponse response) throws IOException {
+        String fileName = "aaa.txt";
+        InputStream is = getInputStream(response);
+        InputStreamSource inputStreamSource = new InputStreamResource(is);
+        return ResponseEntity
+                .ok()
+                .header("Content-Disposition", "attachment;filename=" + fileName)
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .body(inputStreamSource);
+    }
+
     private InputStream getInputStream(HttpServletResponse response) {
         String fileName = "aaa.txt";
         response.setContentType("application/octet-stream");
@@ -58,5 +73,4 @@ public class FileController {
         }
         return null;
     }
-
 }
